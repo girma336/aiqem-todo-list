@@ -5,6 +5,7 @@ import Pagination from '../Pagination';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { RootState } from '../../store/types';
+import Avatar from 'react-avatar';
 
 
 const TodoList = () => {
@@ -38,21 +39,24 @@ const TodoList = () => {
         {currentItems.map((task: any) => (
           <li
             key={task.id}
-            className={`flex justify-around rounded-md mb-4 items-center w-[80%] h-[60px] bg-white ml-auto mr-auto ${task.completed ? 'line-through' : ''}`}
+            className={`flex justify-between relative rounded-md mb-2 items-center w-[80%] h-[60px] bg-white ml-auto mr-auto ${task.completed ? 'line-through' : ''}`}
           >
             <input
               type="checkbox"
               checked={task.completed}
               onChange={() => handleToggleTask(task.id)}
-              className="form-checkbox h-5 w-5 text-blue-500 rounded-full"
+              className="form-checkbox ml-4 h-5 w-5 text-blue-500 rounded-full"
             />
-            <span className="ml-2 text-xl text-[#717082]">{task.name}</span>
+            <span className="ml-2 text-xl text-[#717082] absolute left-[40px]">{task.name}</span>
             <button
               onClick={() => handleDeleteTask(task.id)}
               className="ml-2 bg-red-500 hover:bg-red-600 text-white rounded-lg px-2 py-1"
             >
               Delete
             </button>
+            <div className='w-[50px] h-[50px] absolute right-1 top-1'>
+            <Avatar name={task.catagory} size="50" round="50px" />
+            </div>
             <ToastContainer position="top-right" autoClose={3000} hideProgressBar={true} />
           </li>
         ))}

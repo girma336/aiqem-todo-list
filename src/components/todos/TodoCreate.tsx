@@ -8,17 +8,19 @@ import { RootState } from '../../store/types';
 
 const TodoCreate: React.FC = () => {
   const [newTask, setNewTask] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const tasks = useSelector((state: RootState) => state.tasks.tasks);
   const dispatch = useDispatch();
   console.log(tasks);
   const handleAddTask = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newTask) return;
-
-    dispatch(addTask(newTask, selectedCategory));
-    toast.success('Success message!');
-    setNewTask('');
+    if (!newTask) toast.error('Please add task name');
+    else if (!selectedCategory) toast.error('Please add task catagory');
+    else {
+        dispatch(addTask(newTask, selectedCategory));
+        toast.success('Success message!');
+        setNewTask('');
+    }
   };
 
  
@@ -53,7 +55,7 @@ const TodoCreate: React.FC = () => {
           onChange={(e) => handleCategoryChange(e.target.value)}
           className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <option value="all">All</option>
+          <option >Select Catagory</option>
           <option value="personal">Personal</option>
           <option value="work">Work</option>
         </select>
