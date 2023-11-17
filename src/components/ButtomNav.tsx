@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import { FaAngleDown, FaAngleRight } from 'react-icons/fa';
-import { FaCircle } from "react-icons/fa6";
-import { LuListTodo } from "react-icons/lu";
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/types';
 
@@ -25,7 +22,6 @@ const ButtomNav: React.FC = () => {
         }`}
         onClick={() => handleClick(0)}
       >
-        {/* <FaCircle className="ml-3 bg-red" /> */}
         <p className="text-sm ml-[20px]">Personal{activeIndex === 0 ? <span className='ml-2 border border-white  rounded-full text-sm p-0'>{personalFilter.length}</span>: ''}</p>
       </div>
       <div
@@ -34,7 +30,6 @@ const ButtomNav: React.FC = () => {
         }`}
         onClick={() => handleClick(1)}
       >
-        {/* <FaCircle className="ml-3 text-red-600" /> */}
         <p className="text-sm ml-[20px]">Work{activeIndex === 1 ? <span className='ml-2 border border-white  rounded-full text-sm p-0'>{workFilter.length}</span>: ''}</p>
       </div>
       <div
@@ -43,7 +38,6 @@ const ButtomNav: React.FC = () => {
         }`}
         onClick={() => handleClick(2)}
       >
-        {/* <FaCircle className="ml-3 bg-red" /> */}
         <p className="text-sm ml-[20px] ">All{activeIndex === 2 ? <span className='ml-2 border border-white  rounded-full text-sm p-0 mr-1'>{tasks.length}</span>: ''}</p>
       </div>
         </div>
